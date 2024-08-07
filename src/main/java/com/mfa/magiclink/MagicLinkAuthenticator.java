@@ -14,11 +14,13 @@ public class MagicLinkAuthenticator implements Authenticator {
     @Override
     public void authenticate(AuthenticationFlowContext context) {
         UserModel user = context.getUser();
-        String email = user.getEmail();
         String token = MagiclinkUtils.generateMagicLink(user);
+        Boolean send = MagiclinkUtils.sendMagicLinkEmail(context.getSession(), user, token);
 
-
-
+        if(send){
+            context.challenge(context.form().createForm("send-email.ftl"));
+        }
+        context.challenge(context.form().createForm("failed-email.ftl"));
     }
 
     @Override
