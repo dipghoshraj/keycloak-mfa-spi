@@ -1,4 +1,4 @@
-package com.mfa.keycloak;
+package com.mfa;
 
 /**
  * Hello world!
