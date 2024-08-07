@@ -1,8 +1,6 @@
 package com.mfa.magiclink;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.lang.Strings;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
