@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  keycloak:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - 8080:8080
+      
+    environment:
+      KEYCLOAK_ADMIN: 'admin'
+      KEYCLOAK_ADMIN_PASSWORD: 'noob111'
+
+    entrypoint:  ["/opt/keycloak/bin/kc.sh", "start-dev"]
