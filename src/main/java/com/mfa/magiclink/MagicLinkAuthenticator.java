@@ -11,8 +11,10 @@ public class MagicLinkAuthenticator implements Authenticator {
     @Override
     public void authenticate(AuthenticationFlowContext context) {
         UserModel user = context.getUser();
-        String token = MagiclinkUtils.generateMagicLink(user);
+        String token = MagiclinkUtils.generateMagicLink(context, user);
         Boolean send = MagiclinkUtils.sendMagicLinkEmail(context.getSession(), user, token);
+
+        System.out.println(send);
 
         if(send){
             context.challenge(context.form().createForm("send-email.ftl"));
@@ -23,6 +25,7 @@ public class MagicLinkAuthenticator implements Authenticator {
     @Override
     public void action(AuthenticationFlowContext context) {
         // Handle the magic link verification
+        context.success();
     }
 
 
