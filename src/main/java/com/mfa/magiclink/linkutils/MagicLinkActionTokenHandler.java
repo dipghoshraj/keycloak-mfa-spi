@@ -1,4 +1,4 @@
-package com.mfa.magiclink;
+package com.mfa.magiclink.linkutils;
 
 import org.keycloak.authentication.actiontoken.AbstractActionTokenHandler;
 import org.keycloak.authentication.actiontoken.ActionTokenContext;
@@ -25,6 +25,12 @@ public class MagicLinkActionTokenHandler extends AbstractActionTokenHandler<Magi
     }
 
     @Override
+    public AuthenticationSessionModel startFreshAuthenticationSession(
+        MagicLinkActionToken token, ActionTokenContext<MagicLinkActionToken> tokenContext) {
+        return tokenContext.createAuthenticationSessionForClient(token.getIssuedFor());
+    }
+
+    @Override
     public Response handleToken( MagicLinkActionToken token, ActionTokenContext<MagicLinkActionToken> tokenContext) {  
         UserModel user = tokenContext.getAuthenticationSession().getAuthenticatedUser();
 
@@ -38,6 +44,7 @@ public class MagicLinkActionTokenHandler extends AbstractActionTokenHandler<Magi
 
     final AuthenticationSessionModel authSession = tokenContext.getAuthenticationSession();
     user.setEmailVerified(true);
+    System.out.println("hi it is complete");
 
     String nextAction =
         AuthenticationManager.nextRequiredAction(

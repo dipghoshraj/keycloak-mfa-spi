@@ -1,4 +1,4 @@
-package com.mfa.magiclink;
+package com.mfa.magiclink.linkutils;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +10,7 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
+
 import org.keycloak.models.UserModel;
 import org.keycloak.services.resources.LoginActionsService;
 import org.keycloak.services.resources.RealmsResource;

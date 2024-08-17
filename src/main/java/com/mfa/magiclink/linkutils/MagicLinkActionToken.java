@@ -1,4 +1,4 @@
-package com.mfa.magiclink;
+package com.mfa.magiclink.linkutils;
 
 import org.keycloak.authentication.actiontoken.DefaultActionToken;
 
@@ -6,7 +6,7 @@ public class MagicLinkActionToken extends DefaultActionToken {
 
     public static final String TOKEN_TYPE = "magic-link";
 
-    public MagicLinkActionToken() {
+    private MagicLinkActionToken() {
     }
 
     public MagicLinkActionToken(String userId, int absoluteExpirationInSecs, String email, String clientId) {

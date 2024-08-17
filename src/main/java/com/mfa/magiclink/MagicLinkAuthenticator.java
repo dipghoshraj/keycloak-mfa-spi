@@ -6,6 +6,8 @@ import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
 import org.keycloak.models.UserModel;
 
+import com.mfa.magiclink.linkutils.MagiclinkUtils;
+
 public class MagicLinkAuthenticator implements Authenticator {
 
     @Override
