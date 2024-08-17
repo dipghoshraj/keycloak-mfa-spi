@@ -1,7 +1,7 @@
 
 FROM quay.io/keycloak/keycloak:23.0.7 as builder
 
-COPY target/keycloak-mfa-spi-1.0.6.jar /opt/keycloak/providers/
+COPY target/keycloak-mfa-spi-1.0.1.jar /opt/keycloak/providers/
 
 ENV KC_HEALTH_ENABLED=true \  
     KC_METRICS_ENABLED=true \  
