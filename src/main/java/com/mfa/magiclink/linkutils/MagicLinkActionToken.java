@@ -6,6 +6,7 @@ public class MagicLinkActionToken extends DefaultActionToken {
 
     public static final String TOKEN_TYPE = "magic-link";
 
+    @SuppressWarnings("unused")
     private MagicLinkActionToken() {
     }
 
