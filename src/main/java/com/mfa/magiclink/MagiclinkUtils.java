@@ -27,7 +27,6 @@ public class MagiclinkUtils {
 
         int absoluteExpirationInSecs = Time.currentTime() + tokenExpiration;
         MagicLinkActionToken token = new MagicLinkActionToken(user.getId(), absoluteExpirationInSecs, user.getEmail(), session.getContext().getClient().getClientId());
-        String tokenString = session.tokens().encode(token);
 
         UriInfo uriInfo = session.getContext().getUri();
         RealmModel realm = session.getContext().getRealm();
