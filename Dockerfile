@@ -1,7 +1,7 @@
 
 FROM quay.io/keycloak/keycloak:23.0.7 as builder
 
-COPY target/keycloak-mfa-spi-1.0.1.jar /opt/keycloak/providers/
+COPY target/keycloak-mfa-spi-1.0.6.jar /opt/keycloak/providers/
 
 ENV KC_HEALTH_ENABLED=true \  
     KC_METRICS_ENABLED=true \  
@@ -26,7 +26,11 @@ WORKDIR /opt/keycloak
 
 ENV NAMESPACE=keycloak \
     APPLICATION_NAME=keycloak \  
-    KC_PROXY=edge
+    KC_PROXY=edge \
+    DB_VENDOR=POSTGRES \
+    KC_DB=postgres\
+    KC_HOSTNAME_STRICT=false\
+    KEYCLOAK_MIGRATION_STRATEGY=MANUAL
 
 # ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
 
