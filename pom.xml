@@ -4,7 +4,7 @@
   <groupId>com.mfa</groupId>
   <artifactId>keycloak-mfa-spi</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <name>keycloak-mfa-spi</name>
   <url>http://maven.apache.org</url>
   <dependencies>

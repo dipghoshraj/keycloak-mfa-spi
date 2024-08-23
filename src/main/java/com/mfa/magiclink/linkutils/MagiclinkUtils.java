@@ -16,6 +16,7 @@ import org.keycloak.services.resources.LoginActionsService;
 import org.keycloak.services.resources.RealmsResource;
 import org.keycloak.services.Urls;
 import org.keycloak.common.util.Time;
+import org.keycloak.sessions.AuthenticationSessionModel;
 
 import jakarta.ws.rs.core.UriBuilder;
 import jakarta.ws.rs.core.UriInfo;
@@ -27,7 +28,9 @@ public class MagiclinkUtils {
         KeycloakSession session = context.getSession();
 
         int absoluteExpirationInSecs = Time.currentTime() + tokenExpiration;
-        MagicLinkActionToken token = new MagicLinkActionToken(user.getId(), absoluteExpirationInSecs, user.getEmail(), session.getContext().getClient().getClientId());
+        AuthenticationSessionModel authenticationSession = context.getAuthenticationSession();
+        MagicLinkActionToken token = new MagicLinkActionToken(user.getId(), absoluteExpirationInSecs, user.getEmail(), 
+            session.getContext().getClient().getClientId(), authenticationSession.getRedirectUri() );
 
         UriInfo uriInfo = session.getContext().getUri();
         RealmModel realm = session.getContext().getRealm();
